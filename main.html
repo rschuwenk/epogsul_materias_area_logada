@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno - Epog Sul</title>
+    <style>
+        /* Estilos Gerais */
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background-color: #f0f2f5; 
+            margin: 0;
+        }
+
+        .container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Logo e Textos */
+        .logo { 
+            font-size: 32px; 
+            font-weight: bold; 
+            font-style: italic; 
+            color: #800000; /* Vinho */
+            margin-bottom: 5px;
+        }
+
+        .versao-mobile { 
+            color: red; 
+            font-size: 12px; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            display: block; 
+        }
+
+        /* Inputs e Botões */
+        input { 
+            display: block; 
+            width: 100%; 
+            margin-bottom: 1rem; 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            box-sizing: border-box; 
+        }
+        
+        .btn-principal { 
+            width: 100%; 
+            padding: 12px; 
+            background-color: #800000; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-principal:hover { background-color: #600000; }
+
+        /* Tabela de Matérias */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
+        th, td { border-bottom: 1px solid #eee; padding: 12px 5px; font-size: 14px; }
+        
+        .btn-download { 
+            background-color: #28a745; 
+            color: white; 
+            padding: 5px 10px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-size: 12px; 
+        }
+
+        /* Controle de Exibição das Páginas */
+        #pagina-portal { display: none; } /* Começa escondida */
+        #erro { color: red; font-size: 14px; display: none; margin-top: 10px; }
+
+    </style>
+</head>
+<body>
+
+    <div id="pagina-login" class="container">
+        <div class="logo">Epog Sul</div>
+        <p style="color: #666;">Acesse seu portal</p>
+        
+        <input type="text" id="usuario" placeholder="Número de Usuário (106141)">
+        <input type="password" id="senha" placeholder="Senha (rodemo1)">
+        
+        <button class="btn-principal" onclick="validarAcesso()">Entrar</button>
+        <p id="erro">Usuário ou senha incorretos!</p>
+    </div>
+
+    <div id="pagina-portal" class="container">
+        <div class="logo">Epog Sul</div>
+        <span class="versao-mobile">(Versão mobile)</span>
+
+        <h3>Materiais Disponíveis</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Matéria</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Projeto Final</td>
+                    <td><a href="#" class="btn-download">Download</a></td>
+                </tr>
+                <tr>
+                    <td>Técnicas de Apresentação</td>
+                    <td><a href="#" class="btn-download">Download</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <a href="#" class="btn-principal">Acesse seu horários</a>
+        
+        <p><a href="javascript:location.reload()" style="color: #888; text-decoration: none; font-size: 13px;">Sair do sistema</a></p>
+    </div>
+
+    <script>
+        function validarAcesso() {
+            const user = document.getElementById('usuario').value;
+            const pass = document.getElementById('senha').value;
+
+            if (user === "106141" && pass === "rodemo1") {
+                // Esconde o Login e mostra o Portal
+                document.getElementById('pagina-login').style.display = 'none';
+                document.getElementById('pagina-portal').style.display = 'block';
+                
+                // Ajusta o container para ficar mais largo no portal, se desejar
+                document.querySelector('.container').style.maxWidth = '500px';
+            } else {
+                document.getElementById('erro').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
